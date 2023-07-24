@@ -8,6 +8,12 @@ import { MainComponent } from './main/main.component';
 import { ThemesListComponent } from './themes-list/themes-list.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './home/home.component';
+import { ThemeModule } from './theme/theme.module';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
@@ -15,9 +21,19 @@ import { HttpClientModule } from '@angular/common/http';
     MainComponent,
     ThemesListComponent,
     PostsListComponent,
+    HomeComponent,
+    WelcomeComponent,
+    AuthenticateComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    HttpClientModule,
+    SharedModule,   
+    ThemeModule
+  ],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
